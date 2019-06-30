@@ -1,0 +1,163 @@
+﻿nav {
+	background-color: #6287FC;
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+}
+
+h5 {
+	text-align: center;
+	font-weight: bold;
+	margin: 50px;
+}
+
+button, label {
+	font-size: 18pt;
+    font-weight: bold;
+}
+
+img{
+	display: block;
+	margin: auto;
+
+}
+
+dt {
+    font-weight: bold;
+    clear: left;
+    float: left;
+}
+
+.body {
+	background-color: #7482AE;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+
+.centered{
+	font-weight: bold;
+	text-align: center;
+}
+
+.center{
+	text-align: center !important;
+}
+
+.forcefullwidth{
+	width: 100% !important;
+}
+
+.whitecolor{
+	color: white !important;
+}
+
+.active{
+	color: darkslateblue !important;
+    background-color: #9ED3F2 !important;
+}
+
+.noactive{
+	color: darkslateblue !important;
+	background-color: #FCD762 !important;
+}
+
+.nav-link:hover { 
+  background-color: #6287FC;
+}
+
+.split {
+	top: 54px;
+	bottom: 0;
+	overflow-y: scroll;
+	position: fixed;
+}
+
+.left {
+	width: 20%;
+	left: 0;
+	background-color: #6985DD;
+}
+
+.right {
+	width: 80%;
+	right: 0;
+	background-color: #7482AE;
+}
+
+.chatplace {
+	padding: 0px 10px;
+	background-color: #7482AE;
+}
+
+.btn-on{
+	color: darkslateblue;
+	background-color: #FCD762;
+	font-weight: bold;
+}
+
+.containerChatYou {
+	width: inherit;
+	overflow-wrap: break-word;
+  	word-wrap: break-word;
+  	hyphens: auto;
+  	height: auto;
+  	border: darkslateblue;
+  	background-color: #ECCC66;
+  	border-radius: 5px;
+  	padding: 10px;
+  	margin: 0.5em;
+	text-align: right;
+	overflow: visible;
+	border-left:1em solid transparent;
+	border-right:1em solid transparent;
+}
+
+.containerChatOther {
+	width: inherit;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+	height: auto;
+	border-color: goldenrod;
+	background-color: #9ED3F2;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 0.5em;
+	text-align: left;
+	border-left:1em solid transparent;
+	border-right:1em solid transparent;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #93A3D6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #546499;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #2E3E73;
+}
+
+.scroll {
+	overflow-y: scroll;  
+}
+
+input[type="text"], textarea {
+	background-color : #FCD762;
+	color: darkslateblue;
+}
+

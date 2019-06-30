@@ -1,0 +1,22 @@
+{
+  "name": "DuckChat",
+  "version": "1.0.0",
+  "description": "A Decentralized Chat using the technology of the pods powered by Inrupt.",
+  "author": "Daniel Feández Romeral",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack && node App.js"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "acorn": "^6.1.1",
+    "express": "^4.16.4",
+    "path": "^0.12.7",
+    "solid-auth-client": "^2.3.0",
+    "solid-file-client": "^0.4.9",
+    "standard": "^12.0.1"
+  }
+}

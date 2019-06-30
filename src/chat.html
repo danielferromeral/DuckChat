@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>DuckChat</title>
+
+	<link rel="icon" type="image/png" href="images/icon.png">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="lib/jquery.js"></script>
+	<script src="https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js"></script>
+	<script defer src="index.js" type='text/javascript'></script>
+</head>
+
+<body>
+	<nav class="navbar sticky-top navbar-dark">
+		<a class="navbar-brand whitecolor" style="font-weight: bold" >
+			<img src="images/icon.png" width="30" height="30" class="d-inline-block align-top" alt="chatLogo">
+			DuckChat
+		</a>
+		<button type="button" class="btn btn-on" id="logout-btn">Logout</button>
+	</nav>
+	<div>
+		<div class="split left">
+			<h5 class="centered whitecolor" id="h5friends" style="margin:5px auto 5px auto">Friends List</h5>
+			<div class="container">
+				<input type="text" class="form-control" placeholder="New Friend Uri" id="new-friend-input" style="margin:5px auto 5px auto"/>
+				<button type="button" id="add-friend-btn" class="btn btn-on center" style="margin:5px auto 5px auto">Add New Friend</button>
+			</div>
+			<div class="list-group list-group-flush" id="friends"></div>
+		</div>
+		<div class="split right scroll" id="scroll">
+			<div class="chatplace forcefullwidth" id="MessageArea">
+				<div id="messages"></div>
+			</div>
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Write here your message" id="message-input">
+				<div class="input-group-append">
+					<button class="btn btn-on" type="button" id="send-btn">Send</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(document).ready(async function() {
+		window.setInterval(async function () {
+			let session = await solid.auth.currentSession();
+			if (session) {
+			} else
+				window.location.href = "index.html";
+		},1000);
+	});
+</script>
+</html>

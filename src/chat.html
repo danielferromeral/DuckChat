@@ -49,8 +49,7 @@
 	$(document).ready(async function() {
 		window.setInterval(async function () {
 			let session = await solid.auth.currentSession();
-			if (session) {
-			} else
+			if (!session)
 				window.location.href = "index.html";
 		},1000);
 	});

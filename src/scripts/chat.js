@@ -1,9 +1,13 @@
 var solid = require('./solid.js');
 
 class message {
-    constructor(text, date) {
+    constructor(text, date, you) {
         this.text = text;
         this.date = date;
+        if(you)
+            this.component = "<div class=\"containerChatYou\"><p id=\"noMarginMessge\">" + text + "</p><p id=\"username\">" + (date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()) + "</p></div>"
+        else
+            this.component = "<div class=\"containerChatOther\"><p id=\"noMarginMessge\">" + text + "</p><p id=\"username\">" + (date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()) + "</p></div>"
     }
 }
 
@@ -17,12 +21,6 @@ var DATA = {
 
 var FRIENDS = {
     friends: []
-}
-
-var MESSAGES = {
-    userMSG: [],
-    friendMSG: [],
-    toShow: []
 }
 
 async function setUpFolder() {
@@ -99,9 +97,9 @@ async function receiveMessages() {
     var userMessages = await solid.readFile(userFile);
     var receiveMessages = await solid.readFile(receiveFile);
 
-    if (!userMessages)
+    if (userMessages==null||userMessages=='')
         userMessages = "[]";
-    if (!receiveMessages)
+    if (receiveMessages==null||receiveMessages=='')
         receiveMessages = "[]";
 
     var userParsed = JSON.parse(userMessages);
@@ -114,15 +112,13 @@ async function receiveMessages() {
     if (userParsed) {
         userParsed.forEach(element => {
             date = new Date(Number(element.date));
-            dateText = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-            allParsed.push(new message("<div class=\"containerChatYou\"><p id=\"noMarginMessge\">" + element.text + "</p><p id=\"username\">" + dateText + "</p></div>", date));
+            allParsed.push(new message(element.text, date,true));
         });
     }
     if (receiveParsed) {
         receiveParsed.forEach(element => {
             date = new Date(Number(element.date));
-            dateText = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-            allParsed.push(new message("<div class=\"containerChatOther\"><p id=\"noMarginMessge\">" + element.text + "</p><p id=\"username\">" + dateText + "</p></div>", date));
+            allParsed.push(new message(element.text, date,false));
         });
     }
 
@@ -130,22 +126,21 @@ async function receiveMessages() {
         return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
     });
 
-    MESSAGES.toShow = [];
+    var messages = [];
 
-    allParsed.forEach((n) => {
-        MESSAGES.toShow.push(n.text)
+    allParsed.forEach((msg) => {
+        messages.push(msg.component)
     });
 
-    return MESSAGES.toShow;
+    return messages;
 }
 
 module.exports = {
-    sendMessage: sendMessage,
-    receiveMessages: receiveMessages,
     DATA: DATA,
-    MESSAGES: MESSAGES,
     FRIENDS: FRIENDS,
     addFriend: addFriend,
     listFriends: listFriends,
+    sendMessage: sendMessage,
+    receiveMessages: receiveMessages,
     setUpFolder: setUpFolder
 }

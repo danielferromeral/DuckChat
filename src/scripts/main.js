@@ -20,7 +20,6 @@ $("#solid-login-btn").click(function () {
 
 if(solid.getSession()!=null&&solid.getSession()!=""){
 	solid.getSession().then(session => {
-		console.log(session.webId);
 		loadProfile(session.webId);
 		chat.setUpFolder();
 		showFriends();
@@ -28,15 +27,15 @@ if(solid.getSession()!=null&&solid.getSession()!=""){
 }
 
 $("#add-friend-btn").click(async function() {
-  var newFriend = $("#new-friend-input").val();
-  await chat.addFriend(newFriend);
-  showFriends();
-  $('#new-friend-input').val('');
+	var newFriend = $("#new-friend-input").val();
+	if (!(newFriend.trim().length === 0)) {
+		await chat.addFriend(newFriend);
+		showFriends();
+		$('#new-friend-input').val('');
 	}
-);
+});
 
-$('#send-btn').click(
-	async function sendFunc() {
+$('#send-btn').click(async function sendFunc() {
 		if (document.getElementById("friends").value != "") {
 			var msg = $('#message-input').val();
 			if (!(msg.trim().length === 0)) {
@@ -46,14 +45,12 @@ $('#send-btn').click(
 				scrollDown();
 			}
 		}
-	}
-);
+});
 
 async function showFriends(friends) {
 	var friends = await chat.listFriends();
 	$('#friends').empty();
-	friends.forEach(
-		async (friend) => {
+	friends.forEach(async (friend) => {
       $('#friends').append(
 				$('<button>').attr('type', 'button').attr('chatType', 'personal').addClass("list-group-item list-group-item-action noactive").text(friend.split(".")[0].split("//")[1]).click(
 					async function () {
@@ -69,8 +66,7 @@ async function showFriends(friends) {
 				)
 			);
 			addFriendToList(friend, '#friends-to-add');
-		}
-	);
+		});
 }
 
 async function loadProfile(text) {

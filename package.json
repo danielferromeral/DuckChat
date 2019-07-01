@@ -5,7 +5,7 @@
   "author": "Daniel Feández Romeral",
   "main": "app.js",
   "scripts": {
-    "start": "webpack && node App.js"
+    "start": "webpack && node app.js"
   },
   "devDependencies": {
     "webpack": "^4.29.6",

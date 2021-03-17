@@ -12,7 +12,7 @@
     "webpack-cli": "^3.3.0"
   },
   "dependencies": {
-    "acorn": "^6.1.1",
+    "acorn": "^6.4.1",
     "express": "^4.16.4",
     "path": "^0.12.7",
     "solid-auth-client": "^2.3.0",

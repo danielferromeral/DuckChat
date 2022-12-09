@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "acorn": "^6.4.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "path": "^0.12.7",
     "solid-auth-client": "^2.3.0",
     "solid-file-client": "^0.4.9",
